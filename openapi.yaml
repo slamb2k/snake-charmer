@@ -10,7 +10,7 @@ paths:
     post:
       operationId: dataframe-chat
       description: |
-        Execute the native dataframe-chat function; submit the file path and prompt as a JSON object in the payload input, e.g. {"file_loc": "<URL OF FILE TO CHAT WITH>", "prompt": "<PROMPT TO EXECUTE AGAINST FILE>"}
+        Execute a prompt using a native dataframe-chat function against a remote data source containing inventory . Send the prompt as a JSON object in the payload. e.g. {"prompt": "<PROMPT TO EXECUTE>"}
       requestBody:
         required: True
         content:
@@ -28,10 +28,10 @@ components:
   schemas:
     dataframe-chat:
       type: object
+      required:
+        - prompt
       properties:
-        file_loc:
-          type: string
         prompt:
           type: string
-      required:
-        - input
+          description: The prompt to execute against the remote data source.
+          required: true

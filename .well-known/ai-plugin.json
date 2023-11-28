@@ -1,6 +1,6 @@
 {
     "schema_version": "v1",
-    "name_for_human": "SnakeCharmer",
+    "name_for_human": "Snake Charmer",
     "name_for_model": "SnakeCharmer",
     "description_for_human": "Plugin that allows the user to perform functions in a Python environment.",
     "description_for_model": "Plugin that allows the user to perform functions in a Python environment.",
@@ -12,6 +12,6 @@
         "url": "https://snake-charmer.azurewebsites.net/openapi.yaml"
     },
     "logo_url": "https://snake-charmer.azurewebsites.net/.well-known/icon",
-    "contact_email": "legal@example.com",
+    "contact_email": "info@example.com",
     "legal_info_url": "http://example.com/legal"
 }

@@ -23,18 +23,6 @@ def execute_frame_chat (req: func.HttpRequest) -> func.HttpResponse:
     if sys.platform == "win32" and (3, 8, 0) <= sys.version_info < (3, 9, 1):
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    # Validate that the request body contains a file_loc variable
-    file_loc = req.params.get('file_loc')
-    if not file_loc:
-        try:
-            req_body = req.get_json()
-        except ValueError as exc:
-            raise RuntimeError("file_loc must be set in POST.") from exc
-        else:
-            file_loc = req_body.get('file_loc')
-            if not file_loc:
-                raise RuntimeError("file_loc must be set in POST.")
-
     # Validate that the request body contains a prompt variable
     prompt = req.params.get('prompt')
     if not prompt:
@@ -50,6 +38,7 @@ def execute_frame_chat (req: func.HttpRequest) -> func.HttpResponse:
     # Create a smart dataframe from the file specified
     config = create_llm_config()
 
+    file_loc = "./data/Stock in Location.xlsx"
     df = pandas.read_excel(file_loc)
     sdf = SmartDataframe(df, config=config)
 
